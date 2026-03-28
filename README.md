@@ -1,16 +1,19 @@
-# dokan
+# Dokan — Flutter E-commerce App
 
-A new Flutter project.
+## Features
+- Firebase Auth (Email, Google, Facebook)
+- Product browsing with BLoC state management
+- Offline support with Hive caching
+- Localization (Arabic / English)
+
+## Architecture
+MVVM + Clean Architecture + BLoC
+lib/ → features/ → data / domain / presentation
 
 ## Getting Started
+1. Clone the repo
+2. Add your google-services.json (not included)
+3. Run `flutter pub get && flutter run`
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tech Stack
+Flutter · Dart 3 · Firebase · BLoC · get_it · dartz
