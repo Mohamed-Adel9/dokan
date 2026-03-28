@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "434255871832",
+    "project_id": "dokan-3afb6",
+    "storage_bucket": "dokan-3afb6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434255871832:android:8f0d4c7a1b4a1ad597ef2d",
+        "android_client_info": {
+          "package_name": "com.dokan.dokan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434255871832-1tuc7totpq6vav2gsgsutj4b3rt9gr21.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dokan.dokan",
+            "certificate_hash": "35b1f7bc1a5d3156bd68bd965fcfab37bb02d854"
+          }
+        },
+        {
+          "client_id": "434255871832-eodvir6382v2nm7posehltu8dt66fl3f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsEdawvGhpCvtfrbX24AM35W1xQKRmQ3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434255871832-eodvir6382v2nm7posehltu8dt66fl3f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "434255871832-qfhp95mu7hssio1amhmkqshujv2hptbm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dokan.dokan"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

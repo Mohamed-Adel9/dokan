@@ -1,0 +1,109 @@
+{
+
+  "hello": "اهلا",
+  "welcome_back": "اهلا مجددا",
+  "new": "جديد",
+  "sale": "خصومات",
+  "superSales": "خصومات كبيرة",
+  "viewAll": "عرض الكل",
+  "home": "الرئيسية",
+  "shopping": "تسوق",
+  "bag": "الشنطة",
+  "my_bag": "شنطتي",
+  "favorite": "المفضله",
+  "profile": "الملف الشخصي",
+  "set_language": "حدد اللغة",
+
+  "email_sent": "تم ارسال الرساله",
+  "check_email": "تحقق من بريدك الالكتروني",
+  "back_to_login": "ارجع الي تسجيل الدخول",
+
+  "women": "نساء",
+  "men": "رجال",
+  "kids": "اطفال",
+  "address": "عنوان",
+  "city": "مدينة",
+  "country": "دولة",
+
+
+  "filters": "الفلاتر",
+  "sort_by": "ترتيب بـ",
+  "black": "اسود",
+  "blue": "ازرق",
+  "white": "ابيض",
+  "red": "احمر",
+
+
+  "myBag": "شنطتي",
+  "total_price": "السعر الكلي",
+  "total_price_after_discount": "السعر الكلي بعد الخصم",
+  "delivery": "التوصيل",
+  "total": "السعر",
+  "checkout": "إتمام الشراء",
+  "shipping_address": "عنوان الشحن",
+  "payment_method": "طرق الدفع",
+  "change": "تغيير",
+  "submit_order": "تاكيد الطلب",
+  "success": "تم بنجاح!",
+  "order_success": "سوف يصل اليك طلبك قريباً. \n شكرا لاستخدامك تطبيقنا!",
+  "continue_shopping": "تابع التسوق",
+  "continue": "تابع",
+
+  "my_profile": "ملفي الشخصي",
+  "shipping_addresses": "عناوين التوصيل",
+  "my_reviews": "تقييماتي",
+  "settings": "الاعدادات",
+  "logout": "تسجيل الخروج",
+  "select_size": "تحديد المقاس",
+  "select_color": "تحديد اللون",
+  "add_to_cart": "اضف الي الشنطه",
+  "you_can_also_like": "ممكن يعجبك ايضا",
+  "write_comment": "اكتب تعليق",
+  "rating_and_reviews": "التقييم والتعليقات",
+  "reviews": "تعلقات",
+  "choose_address": "اختار العنوان",
+  "choose_payment_method": "اختار طريقة الدفع",
+
+
+
+
+  "login": "تسجيل الدخول",
+  "forget_password": "نسيت كلمة السر",
+  "remember_password": "تذكرت كلمة السر",
+  "forget_password_text": "من فضلك و ادخل بريدك الالكتورني. \n سوف تستلم رساله بريد الكتروني لاعادة تعيين كلمة السر",
+  "email": "البريد الالكتروني",
+  "password": "كلمة السر",
+  "forget_your_password": "نسيت كلمة السر",
+  "don't_have_account": "ليس دليك حساب ؟",
+  "login_with_social": "او سجل بحساب التواصل الاجتماعي",
+  "sign_up_with_social": "او سجل بحساب التواصل الاجتماعي",
+  "sign_up": "تسجيل حساب جديد",
+  "sign_up_subtitle": "اكتشف منتجاتنا الان",
+  "name": "الاسم",
+  "send": "ارسال",
+  "send_review": "ارسل تعليقك",
+  "view_all": "عرض الكل",
+  "super_sale": "خصومات صيفية كبيرة",
+  "already_have_account": "لدي حساب بالفعل",
+  "what_is_your_rate": "ما هو تقييمك ؟",
+  "opinion": "من فضلك اخبرنا برايك في المنتج",
+
+
+
+
+  "cash_title": "الدفع عند الاستلام",
+  "cash_subtitle": "ادفع لمندوب الشحن عندم يصل طلبك",
+  "card_title": "بطاقة ائتمانية",
+  "card_subtitle": "ادفع بأمان باستخدام بطاقتك البنكية",
+  "wallet_title": "المحافظ الالكترونية",
+  "wallet_subtitle": "ادفع بسهولة باستخدام المحافظ الالكترونية",
+  "egp": "جنية",
+  "off": "خصم",
+  "newest": "الاجدد",
+  "customer_review": "اراء العملاء",
+  "price_low": "السعر: الاقل الي الاعلي",
+  "price_high": "السعر: الاعلي الي الاقل"
+
+
+
+}

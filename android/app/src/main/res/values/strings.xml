@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    <string name="default_web_client_id">YOUR_WEB_CLIENT_ID</string>-->
+    <string name="app_name">dokan</string>
+    <string name="facebook_app_id">1348223330681665</string>
+    <string name="fb_login_protocol_scheme">fb1348223330681665</string>
+    <string name="facebook_client_token">fc55b9eb1a04b3fb82f825c26aa41af5</string>
+</resources>
