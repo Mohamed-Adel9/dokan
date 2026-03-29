@@ -25,6 +25,8 @@ class Assets {
   static const String blocLocaleCubit = 'lib/core/localization/bloc/locale_cubit.dart';
   static const String blocLoginCubit = 'lib/features/auth/presentation/login/bloc/login_cubit.dart';
   static const String blocLoginState = 'lib/features/auth/presentation/login/bloc/login_state.dart';
+  static const String blocPaymentCubit = 'lib/features/payment/presentation/bloc/payment_cubit.dart';
+  static const String blocPaymentStates = 'lib/features/payment/presentation/bloc/payment_states.dart';
   static const String blocProfileCubit = 'lib/features/home/presentation/profile/bloc/profile_cubit.dart';
   static const String blocProfileStates = 'lib/features/home/presentation/profile/bloc/profile_states.dart';
   static const String blocRateCubit = 'lib/features/home/presentation/product/bloc/rate_cubit.dart';
@@ -46,11 +48,13 @@ class Assets {
   static const String entitiesProduct = 'lib/features/home/domain/entities/product.dart';
   static const String entitiesRate = 'lib/features/home/domain/entities/rate.dart';
   static const String entitiesUser = 'lib/features/auth/domain/entities/user.dart';
+  static const String entitiyTransactionEntity = 'lib/features/payment/domain/entitiy/transaction_entity.dart';
   static const String entityAddressModel = 'lib/features/checkout/domain/entity/address_model.dart';
   static const String entityOrderEntity = 'lib/features/checkout/domain/entity/order_entity.dart';
   static const String enumsProductSortType = 'lib/features/home/domain/enums/product_sort_type.dart';
   static const String errorsExceptions = 'lib/core/errors/exceptions.dart';
   static const String errorsFailures = 'lib/core/errors/failures.dart';
+  static const String failurePaymentInitailzationFailure = 'lib/features/payment/domain/failure/payment_initailzation_failure.dart';
   static const String favoriteFavoriteScreen = 'lib/features/home/presentation/favorite/favorite_screen.dart';
   static const String favoriteViewFavoriteProductShow = 'lib/features/home/presentation/favorite/favorite_view/favorite_product_show.dart';
   static const String forgetPasswordForgetPasswordScreen = 'lib/features/auth/presentation/forget_password/forget_password_screen.dart';
@@ -113,6 +117,8 @@ class Assets {
   static const String repositoryAuthRepositoryImpl = 'lib/features/auth/data/repository/auth_repository_impl.dart';
   static const String repositoryOrderRepository = 'lib/features/checkout/domain/repository/order_repository.dart';
   static const String repositoryOrderRepositoryImple = 'lib/features/checkout/data/repository/order_repository_imple.dart';
+  static const String repositoryPaymentRepository = 'lib/features/payment/domain/repository/payment_repository.dart';
+  static const String repositoryPaymentRepositoryImpl = 'lib/features/payment/data/repository/payment_repository_impl.dart';
   static const String shoppingProductScreenArgs = 'lib/features/home/presentation/shopping/product_screen_args.dart';
   static const String shoppingShoppingArgs = 'lib/features/home/presentation/shopping/shopping_args.dart';
   static const String shoppingShoppingLocalDataSource = 'lib/features/home/data/data_source/shopping/shopping_local_data_source.dart';
@@ -132,6 +138,9 @@ class Assets {
   static const String usecasesGetCategoriesUsecase = 'lib/features/home/domain/usecases/get_categories_usecase.dart';
   static const String usecasesGetProductUsecase = 'lib/features/home/domain/usecases/get_product_usecase.dart';
   static const String usecasesGetRatingsUsecase = 'lib/features/home/domain/usecases/get_ratings_usecase.dart';
+  static const String usecasesGetTransactionsUseCase = 'lib/features/payment/domain/usecases/get_transactions_use_case.dart';
+  static const String usecasesPayWithCardUseCase = 'lib/features/payment/domain/usecases/pay_with_card_use_case.dart';
+  static const String usecasesPayWithWalletUseCase = 'lib/features/payment/domain/usecases/pay_with_wallet_use_case.dart';
   static const String widgetsAuthButton = 'lib/shared/widgets/auth_button.dart';
   static const String widgetsAuthTextField = 'lib/shared/widgets/auth_text_field.dart';
   static const String widgetsBagCart = 'lib/shared/widgets/bag_cart.dart';

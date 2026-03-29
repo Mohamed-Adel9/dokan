@@ -90,6 +90,8 @@ flutter:
     - lib/core/navigation/
     - lib/core/localization/
     - lib/core/localization/bloc/
+    - lib/features/payment/
+    - lib/features/payment/data/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

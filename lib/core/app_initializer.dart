@@ -3,7 +3,6 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_paymob/flutter_paymob.dart';
 import 'package:hive_flutter/adapters.dart';
 
-import '../di/service_locator.dart';
 import '../../firebase_options.dart';
 
 class AppInitializer {
