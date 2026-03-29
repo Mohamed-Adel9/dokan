@@ -50,6 +50,9 @@ dependencies:
   hive_flutter: ^1.1.0
   connectivity_plus: ^7.0.0
   path_provider: ^2.1.5
+  flutter_paymob: ^1.0.8
+  firebase_remote_config: ^6.3.0
+  firebase_analytics: ^12.2.0
 
 dev_dependencies:
   flutter_test:
@@ -76,10 +79,17 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/images/logo.png
-     - assets/images/bags.png
-     - assets/images/checkout/
-     - assets/l10n/
+    - assets/images/logo.png
+    - assets/images/bags.png
+    - assets/images/checkout/
+    - assets/l10n/
+    - lib/core/
+    - lib/core/di/
+    - lib/core/theme/
+    - lib/core/errors/
+    - lib/core/navigation/
+    - lib/core/localization/
+    - lib/core/localization/bloc/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
