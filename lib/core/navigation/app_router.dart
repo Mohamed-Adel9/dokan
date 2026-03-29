@@ -134,7 +134,8 @@ class AppRouter {
 
       ///payment router
       case RouteNames.payment:
-        return MaterialPageRoute(builder: (context) => PaymentMethodScreen());
+        final orderAmount = settings.arguments as double;
+        return MaterialPageRoute(builder: (context) => PaymentMethodScreen(orderAmount: orderAmount,));
 
       ///shoppingProductShow router
       case RouteNames.shoppingProductShow:

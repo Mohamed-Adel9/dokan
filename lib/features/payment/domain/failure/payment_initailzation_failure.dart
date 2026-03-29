@@ -11,7 +11,7 @@ class PaymentCancelledFailure extends Failures {
 }
 
 class PaymentDeclinedFailure extends Failures {
-  const PaymentDeclinedFailure(String reason) : super(reason);
+  const PaymentDeclinedFailure(super.reason);
 }
 
 class SaveTransactionFailure extends Failures {

@@ -56,7 +56,7 @@ class CheckOutScreen extends StatelessWidget {
                 /// PAYMENT METHOD
                 _PaymentSection(
                   paymentMethod: paymentMethod,
-                  onChange: () => cubit.selectPaymentMethod(context),
+                  onChange: () => cubit.selectPaymentMethod(context, totalPrice: totalPrice),
                 ),
 
                 const Spacer(),
