@@ -48,6 +48,14 @@ import '../../features/home/data/data_source/shopping/shopping_remote_data_sourc
 import '../../features/home/domain/usecases/bag/update_cart_item_use_case.dart';
 import '../../features/home/domain/usecases/get_categories_usecase.dart';
 import '../../features/home/presentation/home/bloc/home_cubit.dart';
+import '../../features/payment/data/data_source/payment_local_data_source.dart';
+import '../../features/payment/data/data_source/payment_remote_data_source.dart';
+import '../../features/payment/data/repository/payment_repository_impl.dart';
+import '../../features/payment/domain/repository/payment_repository.dart';
+import '../../features/payment/domain/usecases/get_transactions_use_case.dart';
+import '../../features/payment/domain/usecases/pay_with_card_use_case.dart';
+import '../../features/payment/domain/usecases/pay_with_wallet_use_case.dart';
+import '../../features/payment/presentation/bloc/payment_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -57,7 +65,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => FirebaseFirestore.instance);
   sl.registerLazySingleton(() => GoogleSignIn());
   sl.registerLazySingleton(() => FacebookAuth.instance);
-  sl.registerLazySingleton(() => Connectivity(),);
+  sl.registerLazySingleton(() => Connectivity());
 
   // 📡 Data sources
   sl.registerLazySingleton<AuthRemoteDataSource>(
@@ -71,51 +79,57 @@ Future<void> init() async {
     () => HomeRemoteDataSourceImpl(sl()),
   );
   sl.registerLazySingleton<HomeLocalDataSource>(
-        () => HomeLocalDataSourceImpl(),
+    () => HomeLocalDataSourceImpl(),
   );
   sl.registerLazySingleton<ShoppingRemoteDataSource>(
-        () => ShoppingRemoteDataSourceImpl(sl()),
+    () => ShoppingRemoteDataSourceImpl(sl()),
   );
   sl.registerLazySingleton<ShoppingLocalDataSource>(
-        () => ShoppingLocalDataSourceImpl(),
+    () => ShoppingLocalDataSourceImpl(),
   );
 
   sl.registerLazySingleton<RatingRemoteDataSource>(
-        () => RatingRemoteDataSourceImpl(sl()),
+    () => RatingRemoteDataSourceImpl(sl()),
   );
   sl.registerLazySingleton<RatingLocalDataSource>(
-        () => RatingLocalDataSourceImpl(),
+    () => RatingLocalDataSourceImpl(),
   );
 
   sl.registerLazySingleton<CartRemoteDataSource>(
-    () => CartRemoteDataSourceImpl(firestore: sl(),auth: sl()),
+    () => CartRemoteDataSourceImpl(firestore: sl(), auth: sl()),
   );
   sl.registerLazySingleton<OrderRemoteDataSource>(
     () => OrderRemoteDataSourceImpl(sl()),
   );
 
-
+  sl.registerLazySingleton<PaymentRemoteDataSource>(
+    () => PaymentRemoteDataSourceImpl(firestore: sl(), auth: sl()),
+  );
+  sl.registerLazySingleton<PaymentLocalDataSource>(
+    () => PaymentLocalDataSourceImpl(),
+  );
 
   //📦 Repository
   sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
   sl.registerLazySingleton<HomeRepository>(
-    () => HomeRepositoryImpl(sl(),sl(),sl()),
+    () => HomeRepositoryImpl(sl(), sl(), sl()),
   );
   sl.registerLazySingleton<ShoppingRepository>(
-        () => ShoppingRepositoryImpl(sl(),sl(),sl()),
+    () => ShoppingRepositoryImpl(sl(), sl(), sl()),
   );
 
   sl.registerLazySingleton<RateRepository>(
-        () => RatingRepositoryImpl(sl(),sl(),sl()),
+    () => RatingRepositoryImpl(sl(), sl(), sl()),
   );
 
-  sl.registerLazySingleton<CartRepository>(
-        () => CartRepositoryImpl(sl()),
-  );
+  sl.registerLazySingleton<CartRepository>(() => CartRepositoryImpl(sl()));
   sl.registerLazySingleton<OrderRepository>(
     () => OrderRepositoryImpl(remoteDataSource: sl()),
   );
 
+  sl.registerLazySingleton<PaymentRepository>(
+    () => PaymentRepositoryImpl(remote: sl(), local: sl(), connectivity: sl()),
+  );
 
   /// 🎯 Use cases
   sl.registerLazySingleton(() => LoginUseCase(sl()));
@@ -132,7 +146,9 @@ Future<void> init() async {
   sl.registerLazySingleton(() => RemoveFromCartUseCase(sl()));
   sl.registerLazySingleton(() => UpdateCartItemUseCase(repository: sl()));
   sl.registerLazySingleton(() => CreateOrderUseCase(repository: sl()));
-
+  sl.registerLazySingleton(() => PayWithCardUseCase(sl()));
+  sl.registerLazySingleton(() => PayWithWalletUseCase(sl()));
+  sl.registerLazySingleton(() => GetTransactionsUseCase(sl()));
 
   /// 🧠 Cubit
   sl.registerFactory(
@@ -148,7 +164,13 @@ Future<void> init() async {
   sl.registerFactory(() => HomeCubit(sl<GetProductUseCase>()));
   sl.registerFactory(() => ShoppingCubit(sl<GetCategoriesUseCase>()));
   sl.registerFactory(() => RatingCubit(sl<GetRatingsUseCase>()));
-  sl.registerFactory(() => CartCubit(sl(),sl(),sl(),sl()));
+  sl.registerFactory(() => CartCubit(sl(), sl(), sl(), sl()));
   sl.registerFactory(() => CheckoutCubit(sl()));
-
+  sl.registerFactory(
+    () => PaymentCubit(
+      payWithCard: sl(),
+      payWithWallet: sl(),
+      getTransactions: sl(),
+    ),
+  );
 }

@@ -43,6 +43,8 @@ class Assets {
   static const String dataSourceAuthRemoteDataSource = 'lib/features/auth/data/dataSource/auth_remote_data_source.dart';
   static const String dataSourceFirebaseAuthRemoteDataSource = 'lib/features/auth/data/dataSource/firebase_auth_remote_data_source.dart';
   static const String dataSourceOrderRemoteDataSource = 'lib/features/checkout/data/data_source/order_remote_data_source.dart';
+  static const String dataSourcePaymentLocalDataSource = 'lib/features/payment/data/data_source/payment_local_data_source.dart';
+  static const String dataSourcePaymentRemoteDataSource = 'lib/features/payment/data/data_source/payment_remote_data_source.dart';
   static const String diServiceLocator = 'lib/core/di/service_locator.dart';
   static const String entitiesCategories = 'lib/features/home/domain/entities/categories.dart';
   static const String entitiesProduct = 'lib/features/home/domain/entities/product.dart';
@@ -87,8 +89,12 @@ class Assets {
   static const String modelsCategoriesModel = 'lib/features/home/data/models/categories_model.dart';
   static const String modelsProductModel = 'lib/features/home/data/models/product_model.dart';
   static const String modelsRateModel = 'lib/features/home/data/models/rate_model.dart';
+  static const String modelsTransactionModel = 'lib/features/payment/data/models/transaction_model.dart';
   static const String navigationAppRouter = 'lib/core/navigation/app_router.dart';
   static const String navigationRouteNames = 'lib/core/navigation/route_names.dart';
+  static const String pagesPaymentHistoryPage = 'lib/features/payment/presentation/pages/payment_history_page.dart';
+  static const String pagesPaymentPage = 'lib/features/payment/presentation/pages/payment_page.dart';
+  static const String pagesPaymentSuccessPage = 'lib/features/payment/presentation/pages/payment_success_page.dart';
   static const String presentationAddressScreen = 'lib/features/checkout/presentation/address_screen.dart';
   static const String presentationCheckOutScreen = 'lib/features/checkout/presentation/check_out_screen.dart';
   static const String presentationCheckOutScreenArgs = 'lib/features/checkout/presentation/check_out_screen_args.dart';
@@ -153,6 +159,7 @@ class Assets {
   static const String widgetsHaveAccount = 'lib/features/auth/presentation/widgets/have_account.dart';
   static const String widgetsHomeBannerWidget = 'lib/shared/widgets/home_banner_widget.dart';
   static const String widgetsLoginTextFields = 'lib/features/auth/presentation/widgets/login_text_fields.dart';
+  static const String widgetsPaymentMethodTile = 'lib/features/payment/presentation/widgets/payment_method_tile.dart';
   static const String widgetsProductCard = 'lib/shared/widgets/product_card.dart';
   static const String widgetsProfileTile = 'lib/shared/widgets/profile_tile.dart';
   static const String widgetsReviewCard = 'lib/shared/widgets/review_card.dart';
