@@ -12,7 +12,7 @@ class ProductModel extends Product {
     required super.discount,
     required super.categoryName,
     required super.createdAt,
-    required super.isFavorite,
+    required super.isFavorite, required super.info,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -26,7 +26,8 @@ class ProductModel extends Product {
       image: json['image'],
       discount: json['discount'],
       createdAt: (json['createdAt'] as Timestamp).toDate(),
-      isFavorite: json['isFavorite'] ,
+      isFavorite: json['isFavorite'],
+      info: json['info'] ,
     );
   }
 
@@ -42,6 +43,7 @@ class ProductModel extends Product {
       'discount': discount,
       'createdAt': createdAt,
       'isFavorite': isFavorite,
+      "info":info,
     };
   }
 }

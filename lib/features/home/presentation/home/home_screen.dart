@@ -1,4 +1,5 @@
 import 'package:dokan/core/theme/app_text_styles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,18 +10,28 @@ import 'bloc/home_cubit.dart';
 import 'bloc/home_states.dart';
 
 class HomeScreen extends StatelessWidget {
-
   const HomeScreen({super.key});
+
+  String _resolveUserName(User? user) {
+    return user?.displayName ?? user?.email?.split('@').first ?? 'User';
+  }
 
   @override
   Widget build(BuildContext context) {
+    final userName = _resolveUserName(FirebaseAuth.instance.currentUser);
+
     return BlocBuilder<BottomNavCubit, HomeBottomNavState>(
       builder: (context, state) {
         final cubit = context.read<BottomNavCubit>();
-        final userName = cubit.user;
         return Scaffold(
           appBar: AppBar(
-            title: Text("${AppLocalizations.of(context).translate('hello')}, $userName"),
+
+            title: Text(
+              "${AppLocalizations.of(context).translate('hello')}, $userName",
+              style: AppTextStyles.headline3.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
             actions: [
               IconButton(
                 icon: Icon(
@@ -37,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                     cubit.setDark();
                   }
                 },
-              )
+              ),
             ],
             titleTextStyle: AppTextStyles.headline3,
           ),

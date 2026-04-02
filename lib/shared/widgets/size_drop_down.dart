@@ -22,6 +22,7 @@ class _SizeDropdownState extends State<SizeDropdown> {
       ),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: DropdownButtonFormField<String>(
+        isExpanded: true,
         initialValue: selectedSize,
         hint:  Text(AppLocalizations.of(context).translate('select_size')),
         items: sizes.map((size) {

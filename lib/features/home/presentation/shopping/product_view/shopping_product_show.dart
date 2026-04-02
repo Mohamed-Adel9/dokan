@@ -99,7 +99,7 @@ class ShoppingProductShow extends StatelessWidget {
                   crossAxisCount: 2,
                   mainAxisSpacing: 8,
                   crossAxisSpacing: 10,
-                  childAspectRatio: 0.65,
+                  childAspectRatio: 0.60,
                 ),
                 itemBuilder: (context, index) {
                   return ProductCard(product: products[index]);

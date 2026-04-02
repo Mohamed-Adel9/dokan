@@ -2,9 +2,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dokan/features/home/domain/entities/product.dart';
 import 'package:dokan/features/home/domain/usecases/get_product_usecase.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../domain/enums/product_sort_type.dart';
 import '../../bag/bag_screen.dart';
 import '../../favorite/favorite_screen.dart';
@@ -23,7 +21,6 @@ class BottomNavCubit extends Cubit<HomeBottomNavState> {
     const FavoriteScreen(),
      ProfileScreen(),
   ];
-  final user= FirebaseAuth.instance.currentUser!.displayName;
 
   void changeTap(int index) {
     emit(HomeBottomNavState(index));

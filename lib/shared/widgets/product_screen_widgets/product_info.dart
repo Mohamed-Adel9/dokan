@@ -81,8 +81,8 @@ class ProductInfo extends StatelessWidget {
 
         const SizedBox(height: 14),
 
-        const Text(
-          "Short dress in soft cotton jersey...",
+         Text(
+          product.info,
 
         ),
       ],

@@ -101,6 +101,7 @@ class Assets {
   static const String presentationCheckOutSuccessScreen = 'lib/features/checkout/presentation/check_out_success_screen.dart';
   static const String presentationPaymentMethodScreen = 'lib/features/checkout/presentation/payment_method_screen.dart';
   static const String productProductScreen = 'lib/features/home/presentation/product/product_screen.dart';
+  static const String productRatingBottomSheet = 'lib/features/home/presentation/product/rating_bottom_sheet.dart';
   static const String productRatingScreen = 'lib/features/home/presentation/product/rating_screen.dart';
   static const String productScreenWidgetsAddToCartButton = 'lib/shared/widgets/product_screen_widgets/add_to_cart_button.dart';
   static const String productScreenWidgetsProductImage = 'lib/shared/widgets/product_screen_widgets/product_image.dart';
@@ -140,6 +141,7 @@ class Assets {
   static const String themeDarkTheme = 'lib/core/theme/dark_theme.dart';
   static const String themeLightTheme = 'lib/core/theme/light_theme.dart';
   static const String themeThemeCubit = 'lib/core/theme/theme_cubit.dart';
+  static const String usecasesAddRatingUseCase = 'lib/features/home/domain/usecases/add_rating_use_case.dart';
   static const String usecasesCreateOrderUseCase = 'lib/features/checkout/domain/usecases/create_order_use_case.dart';
   static const String usecasesGetCategoriesUsecase = 'lib/features/home/domain/usecases/get_categories_usecase.dart';
   static const String usecasesGetProductUsecase = 'lib/features/home/domain/usecases/get_product_usecase.dart';

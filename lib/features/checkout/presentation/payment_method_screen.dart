@@ -251,7 +251,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
         }
         cubit.payWithWallet(
           context: context,
-          amount: 1,
+          amount: widget.orderAmount,
           phoneNumber: phone,
         );
         break;

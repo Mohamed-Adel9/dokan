@@ -1,4 +1,6 @@
+import 'package:dokan/core/navigation/route_names.dart';
 import 'package:dokan/core/theme/app_text_styles.dart';
+import 'package:dokan/features/home/presentation/shopping/shopping_args.dart';
 import 'package:dokan/shared/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,20 +39,36 @@ class MainScreen extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(AppLocalizations.of(context).translate('sale'), style: AppTextStyles.headline),
                                   Text(
-                                    AppLocalizations.of(context).translate('super_sale'),
-                                    style: AppTextStyles.helperText.copyWith(
-                                    ),
+                                    AppLocalizations.of(
+                                      context,
+                                    ).translate('sale'),
+                                    style: AppTextStyles.headline,
+                                  ),
+                                  Text(
+                                    AppLocalizations.of(
+                                      context,
+                                    ).translate('super_sale'),
+                                    style: AppTextStyles.helperText.copyWith(),
                                   ),
                                 ],
                               ),
                               TextButton(
                                 onPressed: () {
-                                  // todo view all products
+                                  Navigator.pushNamed(
+                                    context,
+                                    RouteNames.shoppingProductShow,
+                                    arguments: ShoppingArgs(
+                                      categoryName: "Product",
+                                      categoryKind: "All",
+                                      products: state.product,
+                                    ),
+                                  );
                                 },
                                 child: Text(
-                                  AppLocalizations.of(context).translate('view_all'),
+                                  AppLocalizations.of(
+                                    context,
+                                  ).translate('view_all'),
                                   style: AppTextStyles.helperText,
                                 ),
                               ),
@@ -67,7 +85,65 @@ class MainScreen extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 final product = state.product[index];
-                                return ProductCard(product: product,);
+                                return ProductCard(product: product);
+                              },
+                            ),
+                          ),
+
+                          // product head data
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    AppLocalizations.of(
+                                      context,
+                                    ).translate('offers'),
+                                    style: AppTextStyles.headline,
+                                  ),
+                                  Text(
+                                    AppLocalizations.of(
+                                      context,
+                                    ).translate('offers_exiting'),
+                                    style: AppTextStyles.helperText.copyWith(),
+                                  ),
+                                ],
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    RouteNames.shoppingProductShow,
+                                    arguments: ShoppingArgs(
+                                      categoryName: "Product",
+                                      categoryKind: "All",
+                                      products: state.product,
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  AppLocalizations.of(
+                                    context,
+                                  ).translate('view_all'),
+                                  style: AppTextStyles.helperText,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          //products
+                          SizedBox(
+                            width: double.infinity,
+                            height: 300,
+                            child: ListView.builder(
+                              physics: BouncingScrollPhysics(),
+                              itemCount: state.product.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index) {
+                                final product = state.product.reversed.toList()[index];
+                                return ProductCard(product: product);
                               },
                             ),
                           ),

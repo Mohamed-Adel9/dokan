@@ -4,6 +4,7 @@ class Product {
   final String productName;
   final String category;
   final String categoryName;
+  final String info;
   final DateTime createdAt;
   final String image;
   final double price;
@@ -22,6 +23,7 @@ class Product {
     required this.categoryName,
     required this.createdAt,
     required this.isFavorite,
+    required this.info,
   });
   Product copyWith({
     bool? isFavorite,
@@ -37,6 +39,7 @@ class Product {
       createdAt: createdAt,
       rate: rate,
       isFavorite: isFavorite ?? this.isFavorite,
+      info:info,
     );
   }
 

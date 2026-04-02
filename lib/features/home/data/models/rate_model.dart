@@ -6,7 +6,6 @@ class RateModel extends Rate {
     required super.rate,
     required super.review,
     required super.time,
-    required super.image,
     required super.userName,
 
   });
@@ -16,7 +15,6 @@ class RateModel extends Rate {
       rate: json['rate'],
       review: json['review'],
       userName: json['user_name'],
-      image: json['image'],
       time: (json['date'] as Timestamp).toDate(),
     );
   }
@@ -25,7 +23,6 @@ class RateModel extends Rate {
     return {
       'rate': rate,
       'review': review,
-      'image': image,
       'date': time,
       'user_name': userName,
     };

@@ -88,6 +88,7 @@
   "save_address": "Save Address",
   "already_have_account": "Already Have An Account ?",
 
+  "big_sale": "Big Sale",
   "cash_title": "Cash on Delivery",
   "cash_subtitle": "Pay when your order arrives",
   "card_title": "Credit / Debit Card",
@@ -98,5 +99,8 @@
   "newest": "Newest",
   "customer_review": "Customer Review",
   "price_low": "Price: Lowest to high",
-  "price_high": "Price: Highest to low"
+  "price_high": "Price: Highest to low",
+  "offers": "Offers",
+  "offers_exiting": "Exiting Offers!"
+
 }

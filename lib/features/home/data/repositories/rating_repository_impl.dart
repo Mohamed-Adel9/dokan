@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dokan/core/errors/failures.dart';
@@ -33,6 +34,24 @@ class RatingRepositoryImpl implements RateRepository {
       return Right(localRatings);
     } catch (e) {
       throw Left(e.toString());
+    }
+  }
+
+  Future<Either<Failures, void>> addRating({
+    required int rate,
+    required String name,
+    required String comment,
+  }) async {
+    try {
+      await FirebaseFirestore.instance.collection("rating").add({
+        "user_name": name,
+        "rate": rate,
+        "review": comment,
+        "date": DateTime.now(),
+      });
+      return Right(null);
+    } catch (e) {
+      return Left(ServerFailure( e.toString()));
     }
   }
 }

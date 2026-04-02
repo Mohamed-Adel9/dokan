@@ -6,6 +6,7 @@ import '../widgets/sort_bottom_sheet.dart';
 
 void showSortBottomSheet(BuildContext context) {
   showModalBottomSheet(
+    backgroundColor: Colors.grey,
     context: context,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(20)),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../features/home/domain/entities/rate.dart';
 
@@ -30,9 +31,9 @@ class ReviewCard extends StatelessWidget {
             children: [
                CircleAvatar(
                 radius: 18,
-                backgroundImage: NetworkImage(
-                  rateModel.image,
-                ),
+                backgroundColor: Colors.grey,
+                child: FaIcon(FontAwesomeIcons.user),
+
               ),
               const SizedBox(width: 10),
                Expanded(
@@ -44,7 +45,7 @@ class ReviewCard extends StatelessWidget {
                 ),
               ),
                Text(
-                rateModel.time.toString(),
+                "${rateModel.time.year}-${rateModel.time.month}-${rateModel.time.day} ",
                 style: TextStyle( fontSize: 12),
               ),
             ],

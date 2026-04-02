@@ -22,6 +22,7 @@ import 'package:dokan/features/home/domain/repositories/bag/cart_repository.dart
 import 'package:dokan/features/home/domain/repositories/home_repository.dart';
 import 'package:dokan/features/home/domain/repositories/rate_repository.dart';
 import 'package:dokan/features/home/domain/repositories/shopping_repository.dart';
+import 'package:dokan/features/home/domain/usecases/add_rating_use_case.dart';
 import 'package:dokan/features/home/domain/usecases/bag/add_to_cart_use_case.dart';
 import 'package:dokan/features/home/domain/usecases/bag/get_cart_use_case.dart';
 import 'package:dokan/features/home/domain/usecases/bag/remove_from_cart_use_case.dart';
@@ -149,6 +150,7 @@ Future<void> setupGetIt() async {
   sl.registerLazySingleton(() => PayWithCardUseCase(sl()));
   sl.registerLazySingleton(() => PayWithWalletUseCase(sl()));
   sl.registerLazySingleton(() => GetTransactionsUseCase(sl()));
+  sl.registerLazySingleton(() => AddRatingUseCase(sl()));
 
   /// 🧠 Cubit
   sl.registerFactory(
@@ -163,7 +165,12 @@ Future<void> setupGetIt() async {
   sl.registerFactory(() => ForgetPasswordCubit(sl<ForgetPasswordUseCase>()));
   sl.registerFactory(() => HomeCubit(sl<GetProductUseCase>()));
   sl.registerFactory(() => ShoppingCubit(sl<GetCategoriesUseCase>()));
-  sl.registerFactory(() => RatingCubit(sl<GetRatingsUseCase>()));
+  sl.registerFactory(
+    () => RatingCubit(
+      addRatingUseCase: sl<AddRatingUseCase>(),
+      getRatingsUseCase: sl<GetRatingsUseCase>(),
+    ),
+  );
   sl.registerFactory(() => CartCubit(sl(), sl(), sl(), sl()));
   sl.registerFactory(() => CheckoutCubit(sl()));
   sl.registerFactory(
