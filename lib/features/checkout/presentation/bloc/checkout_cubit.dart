@@ -19,11 +19,12 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   Future<void> selectPaymentMethod(
       BuildContext context, {
         required double totalPrice,
+        required double totalPriceAfterDis,
       }) async {
     final result = await Navigator.push<String>(
       context,
       MaterialPageRoute(
-        builder: (_) => PaymentMethodScreen(orderAmount: totalPrice),
+        builder: (_) => PaymentMethodScreen(orderAmount: totalPrice, orderAmountAfterDis: totalPriceAfterDis,),
       ),
     );
 

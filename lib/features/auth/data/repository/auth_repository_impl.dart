@@ -6,6 +6,7 @@ import 'package:dokan/features/auth/domain/entities/user.dart';
 import 'package:dokan/features/auth/domain/repositories/auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide FirebaseAuthException;
 
+
 class AuthRepositoryImpl implements  AuthRepository{
 
   final AuthRemoteDataSource remote ;
@@ -144,4 +145,9 @@ class AuthRepositoryImpl implements  AuthRepository{
         return 'Something went wrong. Please try again';
     }
   }
+
+
+
+
+
 }

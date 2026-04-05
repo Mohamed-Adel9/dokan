@@ -36,7 +36,7 @@ class RatingRepositoryImpl implements RateRepository {
       throw Left(e.toString());
     }
   }
-
+  @override
   Future<Either<Failures, void>> addRating({
     required int rate,
     required String name,

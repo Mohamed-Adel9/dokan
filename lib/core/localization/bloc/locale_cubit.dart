@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 
 class LocaleCubit extends Cubit<Locale> {
-  LocaleCubit() : super(const Locale('en')) {
+  LocaleCubit() : super(const Locale('ar')) {
     loadLocale();
   }
 
@@ -14,10 +14,11 @@ class LocaleCubit extends Cubit<Locale> {
     final box = await Hive.openBox(_boxName);
     final savedLocale = box.get(_localeKey);
 
-    if (savedLocale == 'ar') {
+    if (savedLocale == null) {
+      await box.put(_localeKey, 'ar');
       emit(const Locale('ar'));
     } else {
-      emit(const Locale('en'));
+      emit(Locale(savedLocale));
     }
   }
 

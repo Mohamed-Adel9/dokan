@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dokan/core/errors/exceptions.dart';
+import 'package:dokan/features/auth/data/models/user_model.dart';
 import 'package:dokan/features/auth/domain/entities/user.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide FirebaseAuthException;
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -17,12 +19,21 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final FirebaseAuth firebaseAuth;
   final GoogleSignIn googleSignIn;
   final FacebookAuth facebookAuth;
-
   AuthRemoteDataSourceImpl({
     required this.firebaseAuth,
     required this.googleSignIn,
     required this.facebookAuth,
   });
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
+
+  Future<void> createUserIfNotExists(UserModel user) async {
+    final docRef = _db.collection('users').doc(user.id);
+    final docSnapshot = await docRef.get();
+
+    if (!docSnapshot.exists) {
+      await docRef.set(user.toJson());
+    }
+  }
 
   //login
   @override
@@ -38,12 +49,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       if (user == null) {
         throw AuthException("User not found");
       }
-
-      return UserEntity(
-        id: user.uid,
-        email: user.email ?? "",
-        name: user.displayName ?? "noBody",
-      );
+  final userData = UserModel(
+    id: user.uid,
+    email: user.email ?? "",
+    name: user.displayName ?? "noBody",
+  );
+      createUserIfNotExists(userData);
+      return userData ;
     } on FirebaseAuthException catch (e) {
       throw AuthException(e.message);
     }
@@ -91,11 +103,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
     final user = userCredential.user!;
 
-    return UserEntity(
+    final userData = UserModel(
       id: user.uid,
       email: user.email ?? "",
-      name: user.displayName ?? "noBodyGoogle",
+      name: user.displayName ?? "noBody",
     );
+    createUserIfNotExists(userData);
+    return userData ;
   }
 
   //logout

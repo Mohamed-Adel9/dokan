@@ -53,11 +53,7 @@ class ProfileScreen extends StatelessWidget {
                   subtitle: "Visa  **34",
                   onPressed: () {},
                 ),
-                ProfileTile(
-                  title: "My reviews",
-                  subtitle: "Reviews for 4 items",
-                  onPressed: () {},
-                ),
+
                 ProfileTile(
                   title: "Settings",
                   subtitle: "Notifications, password",

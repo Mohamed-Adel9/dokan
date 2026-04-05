@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dokan/features/home/domain/usecases/bag/add_to_cart_use_case.dart';
 import 'package:dokan/features/home/domain/usecases/bag/remove_from_cart_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 
 import '../../../domain/entities/bag/cart_item.dart';
 import '../../../domain/usecases/bag/get_cart_use_case.dart';
@@ -48,6 +50,29 @@ class CartCubit extends Cubit<CartState> {
       await updateQuantity(item.productId, item.quantity - 1);
     } else {
       await removeFromCartUseCase(item.productId);
+    }
+  }
+  Future<void> clearCart(String userId) async {
+    try {
+      /// 1. Clear Firestore
+      final cartCollection = FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .collection('cart');
+
+      final snapshot = await cartCollection.get();
+
+      for (var doc in snapshot.docs) {
+        await doc.reference.delete();
+      }
+
+      emit(
+        CartLoadedState(
+          items: [],
+        ),
+      );
+    } catch (e) {
+      print("Error clearing cart: $e");
     }
   }
 

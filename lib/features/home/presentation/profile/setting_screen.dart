@@ -24,8 +24,8 @@ class SettingsScreen extends StatelessWidget {
                 children: [
                   IconButton(onPressed: (){
                     Navigator.of(context).pop();
-                  },icon: const Icon(Icons.arrow_back, color: Colors.white)),
-                  const Icon(Icons.search, color: Colors.white),
+                  },icon: const Icon(Icons.arrow_back, )),
+                  const Icon(Icons.search, ),
                 ],
               ),
 
@@ -56,7 +56,7 @@ class SettingsScreen extends StatelessWidget {
                 },
                 child: Text(
                   "Password Change",
-                  style: TextStyle(color: Colors.white70, fontSize: 16),
+                  style: TextStyle( fontSize: 16),
                 ),
               ),
 
@@ -70,7 +70,7 @@ class SettingsScreen extends StatelessWidget {
                 children: [
                   const Text(
                     "Notifications",
-                    style: TextStyle(color: Colors.white70, fontSize: 16),
+                    style: TextStyle( fontSize: 16),
                   ),
                   Spacer(),
                   _buildSwitch(true),

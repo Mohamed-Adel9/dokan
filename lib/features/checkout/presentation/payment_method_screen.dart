@@ -9,7 +9,8 @@ import '../../payment/presentation/bloc/payment_states.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
   final double orderAmount; // pass this from your cart/order screen
-  const PaymentMethodScreen({super.key, required this.orderAmount});
+  final double orderAmountAfterDis;
+  const PaymentMethodScreen({super.key, required this.orderAmount, required this.orderAmountAfterDis});
 
   @override
   State<PaymentMethodScreen> createState() => _PaymentMethodScreenState();
@@ -234,7 +235,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
       case 'card':
         cubit.payWithCard(
           context: context,
-          amount: widget.orderAmount,
+          amount: widget.orderAmountAfterDis,
         );
         break;
 
@@ -251,7 +252,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
         }
         cubit.payWithWallet(
           context: context,
-          amount: widget.orderAmount,
+          amount: widget.orderAmountAfterDis,
           phoneNumber: phone,
         );
         break;

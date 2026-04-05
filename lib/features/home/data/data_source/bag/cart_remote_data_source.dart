@@ -45,13 +45,11 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
     final doc = await docRef.get();
 
     if (doc.exists) {
-      /// 🔥 If item exists → increase quantity
       final currentQty = doc['quantity'];
       await docRef.update({
         "quantity": currentQty + item.quantity,
       });
     } else {
-      /// 🔥 New item
       await docRef.set({
         "productId": item.productId,
         "name": item.name,

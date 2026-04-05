@@ -43,10 +43,10 @@ class ProfileTile extends StatelessWidget {
           ),
           IconButton(
             onPressed: onPressed,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_forward_ios,
               size: 16,
-              color: Colors.white54,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
         ],

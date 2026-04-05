@@ -3,6 +3,7 @@ import 'package:dokan/core/theme/app_text_styles.dart';
 import 'package:dokan/features/checkout/presentation/bloc/checkout_cubit.dart';
 import 'package:dokan/features/checkout/presentation/bloc/checkout_state.dart';
 import 'package:dokan/features/home/presentation/bag/bloc/cart_state.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,12 +29,10 @@ class CheckOutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<CheckoutCubit>();
     final locale = AppLocalizations.of(context);
-    
+    final uid=  FirebaseAuth.instance.currentUser!.uid;
 
     return Scaffold(
-      appBar: AppBar(
-        title:  Text(locale.translate("checkout")),
-      ),
+      appBar: AppBar(title: Text(locale.translate("checkout"))),
 
       body: BlocBuilder<CheckoutCubit, CheckoutState>(
         builder: (context, state) {
@@ -56,7 +55,11 @@ class CheckOutScreen extends StatelessWidget {
                 /// PAYMENT METHOD
                 _PaymentSection(
                   paymentMethod: paymentMethod,
-                  onChange: () => cubit.selectPaymentMethod(context, totalPrice: totalPrice),
+                  onChange: () => cubit.selectPaymentMethod(
+                    context,
+                    totalPrice: totalPrice,
+                    totalPriceAfterDis: totalPriceAfterDiscount,
+                  ),
                 ),
 
                 const Spacer(),
@@ -76,18 +79,44 @@ class CheckOutScreen extends StatelessWidget {
                   height: 50,
                   child: AuthButton(
                     text: locale.translate("submit_order"),
-                    onPressed: () {
-                      final cartState = context.read<CartCubit>().state;
+                      onPressed: () {
+                        final checkoutState = context.read<CheckoutCubit>().state;
+                        final cartState = context.read<CartCubit>().state;
+                        final cartCubit = context.read<CartCubit>();
 
-                      if (cartState is CartLoadedState) {
-                        final cartItems = cartState.items;
-                        context.read<CheckoutCubit>().submitOrder(
-                          cartItems,
-                          totalPriceAfterDiscount,
-                        );
-                        Navigator.pushNamed(context, RouteNames.checkoutSuccess);
+                        // ✅ Validate address
+                        if (checkoutState.address == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(locale.translate("choose_address"))),
+                          );
+                          return;
+                        }
+
+                        // ✅ Validate payment method
+                        if (checkoutState.paymentMethod == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(locale.translate("choose_payment_method"))),
+                          );
+                          return;
+                        }
+
+                        // ✅ Validate cart
+                        if (cartState is CartLoadedState) {
+                          final cartItems = cartState.items;
+
+                          context.read<CheckoutCubit>().submitOrder(
+                            cartItems,
+                            totalPriceAfterDiscount,
+                          );
+
+                          cartCubit.clearCart(uid);
+
+                          Navigator.pushNamed(
+                            context,
+                            RouteNames.checkoutSuccess,
+                          );
+                        }
                       }
-                    },
                   ),
                 ),
               ],
@@ -118,8 +147,14 @@ class _ShippingAddressSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(locale.translate("shipping_address"), style: AppTextStyles.subheads),
-            TextButton(onPressed: onChange, child:  Text(locale.translate("change"))),
+            Text(
+              locale.translate("shipping_address"),
+              style: AppTextStyles.subheads,
+            ),
+            TextButton(
+              onPressed: onChange,
+              child: Text(locale.translate("change")),
+            ),
           ],
         ),
 
@@ -128,9 +163,7 @@ class _ShippingAddressSection extends StatelessWidget {
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-          ),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
 
           child: address == null
               ? Text(locale.translate("choose_address"))
@@ -171,17 +204,23 @@ class _PaymentSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(locale.translate("payment_method"), style: AppTextStyles.subheads),
-            TextButton(onPressed: onChange, child:  Text(locale.translate("change"))),
+            Text(
+              locale.translate("payment_method"),
+              style: AppTextStyles.subheads,
+            ),
+            TextButton(
+              onPressed: onChange,
+              child: Text(locale.translate("change")),
+            ),
           ],
         ),
 
         const SizedBox(height: 10),
 
         if (paymentMethod == null)
-           Text(locale.translate("choose_payment_method"))
+          Text(locale.translate("choose_payment_method"))
         else
-          paymentWidget(context,paymentMethod!),
+          paymentWidget(context, paymentMethod!),
       ],
     );
   }

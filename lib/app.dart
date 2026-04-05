@@ -35,8 +35,8 @@ class DokanAppScreen extends StatelessWidget {
                   GlobalCupertinoLocalizations.delegate,
                 ],
                 supportedLocales: const [
-                  Locale('en'),
                   Locale('ar'),
+                  Locale('en'),
                 ],
                 locale: locale,
 

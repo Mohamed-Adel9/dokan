@@ -90,6 +90,7 @@ class Assets {
   static const String modelsProductModel = 'lib/features/home/data/models/product_model.dart';
   static const String modelsRateModel = 'lib/features/home/data/models/rate_model.dart';
   static const String modelsTransactionModel = 'lib/features/payment/data/models/transaction_model.dart';
+  static const String modelsUserModel = 'lib/features/auth/data/models/user_model.dart';
   static const String navigationAppRouter = 'lib/core/navigation/app_router.dart';
   static const String navigationRouteNames = 'lib/core/navigation/route_names.dart';
   static const String pagesPaymentHistoryPage = 'lib/features/payment/presentation/pages/payment_history_page.dart';
